@@ -14,5 +14,9 @@ namespace пр1
         public string Phone { get; set; }
 
         public double Temperature { get; set; }
+
+        public int SkinColorR { get; set; }
+        public int SkinColorB { get; set; }
+        public int SkinColorG { get; set; }
     }
 }

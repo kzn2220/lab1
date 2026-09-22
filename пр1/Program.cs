@@ -37,8 +37,28 @@ namespace пр1
             patient.BirthDate = InputBirthDate();
             patient.Phone = InputPhone();
             patient.Temperature = InputTemperature();
+            InputSkinColor(patient);
 
             return patient;
+        }
+
+        static void InputSkinColor(Patient patient)
+        {
+            patient.SkinColorR = InputRgbComponent("R");
+            patient.SkinColorG = InputRgbComponent("G");
+            patient.SkinColorB = InputRgbComponent("B");
+        }
+
+        static int InputRgbComponent(string name)
+        {
+            while (true)
+            {
+                Console.Write($"Цвет кожи {name} (0-255): ");
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int value) && value >= 0 && value <= 255)
+                    return value;
+                Console.WriteLine("Ошибка. Введите число от 0 до 255");
+            }
         }
 
         static string InputPassport()
@@ -119,6 +139,7 @@ namespace пр1
             Console.WriteLine($"Дата рождения: {p.BirthDate:yyyy-MM-dd}");
             Console.WriteLine($"Телефон:       {p.Phone}");
             Console.WriteLine($"Температура:   {p.Temperature:F2}");
+            Console.WriteLine($"Цвет кожи:     RGB({p.SkinColorR}, {p.SkinColorG}, {p.SkinColorB})");
         }
 
         static bool AskYesNo(string question)
